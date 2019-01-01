@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.kilobolt.gameworld.GameRenderer;
 import com.kilobolt.gameworld.GameWorld;
+import com.kilobolt.zbHelpers.InputHandler;
 
 /**
  * Created by Rene Ambrose Tang on 1/1/2019.
@@ -27,6 +28,8 @@ public class GameScreen implements Screen {
         Gdx.app.log("GameScreen", "Attached");
         myGameworld = new GameWorld(midPointY);
         myGameRenderer = new GameRenderer(myGameworld);
+
+        Gdx.input.setInputProcessor(new InputHandler(myGameworld.getBird()));
     }
 
     @Override
