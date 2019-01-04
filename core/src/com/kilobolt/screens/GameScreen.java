@@ -15,6 +15,7 @@ public class GameScreen implements Screen {
 
     private GameWorld myGameworld;
     private GameRenderer myGameRenderer;
+    private float runTime =0;
 
     public GameScreen() {
 
@@ -27,7 +28,7 @@ public class GameScreen implements Screen {
 
         Gdx.app.log("GameScreen", "Attached");
         myGameworld = new GameWorld(midPointY);
-        myGameRenderer = new GameRenderer(myGameworld);
+        myGameRenderer = new GameRenderer(myGameworld, (int)gameHeight, midPointY);
 
         Gdx.input.setInputProcessor(new InputHandler(myGameworld.getBird()));
     }
@@ -39,8 +40,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        runTime += delta;
         myGameworld.update(delta);
-        myGameRenderer.render();
+        myGameRenderer.render(runTime);
     }
 
     @Override
