@@ -61,6 +61,10 @@ public class Scrollable {
         return height;
     }
 
+    public void stop() {
+        velocity.x = 0;
+    }
+
 
 }
 
