@@ -19,7 +19,7 @@ public class ScrollHandler {
 
     // Constructor receives a float that tells us where we need to create our
     // Grass and Pipe objects.
-    public ScrollHandler(GameWorld gameWorld,float yPos) {
+    public ScrollHandler(GameWorld gameWorld, float yPos) {
         this.gameWorld = gameWorld;
 
         frontGrass = new Grass(0, yPos, 143, 11, SCROLL_SPEED);
@@ -118,5 +118,13 @@ public class ScrollHandler {
         pipe1.stop();
         pipe2.stop();
         pipe3.stop();
+    }
+
+    public void onRestart() {
+        frontGrass.onRestart(0, SCROLL_SPEED);
+        backGrass.onRestart(frontGrass.getTailX(), SCROLL_SPEED);
+        pipe1.onRestart(210, SCROLL_SPEED);
+        pipe2.onRestart(pipe1.getTailX() + PIPE_GAP, SCROLL_SPEED);
+        pipe3.onRestart(pipe2.getTailX() + PIPE_GAP, SCROLL_SPEED);
     }
 }

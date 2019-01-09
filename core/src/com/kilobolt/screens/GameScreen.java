@@ -2,7 +2,6 @@ package com.kilobolt.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.kilobolt.gameworld.GameRenderer;
 import com.kilobolt.gameworld.GameWorld;
 import com.kilobolt.zbHelpers.InputHandler;
@@ -30,7 +29,7 @@ public class GameScreen implements Screen {
         myGameworld = new GameWorld(midPointY);
         myGameRenderer = new GameRenderer(myGameworld, (int)gameHeight, midPointY);
 
-        Gdx.input.setInputProcessor(new InputHandler(myGameworld.getBird()));
+        Gdx.input.setInputProcessor(new InputHandler(myGameworld));
     }
 
     @Override
@@ -41,7 +40,7 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         runTime += delta;
-        myGameworld.update(delta);
+        myGameworld.updateRunning(delta);
         myGameRenderer.render(runTime);
     }
 
